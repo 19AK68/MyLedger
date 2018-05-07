@@ -8,7 +8,7 @@
         android:id="@+id/layoutDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="20dp"
         android:orientation="horizontal"
         android:background="@drawable/customborder">
 
@@ -60,9 +60,30 @@
         android:layout_below="@+id/layoutDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="20dp"
         android:orientation="horizontal"
         android:background="@drawable/customborder">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Категория " />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingRight="16dp"
+            android:spinnerMode="dropdown">
+
+        </Spinner>
+
+        </LinearLayout>
 
     </LinearLayout>
     <!-- end layoutCategory-->
@@ -72,9 +93,28 @@
         android:layout_below="@+id/layoutCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="20dp"
         android:orientation="horizontal"
         android:background="@drawable/customborder">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Cумма " />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp">
+
+            <EditText
+                android:id="@+id/etAddSCostSum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите Сумму"
+                android:inputType="number"
+                android:digits="0123456789.,"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
     <!-- end layoutEditSum-->
@@ -84,9 +124,30 @@
         android:layout_below="@+id/layoutEditSum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="20dp"
         android:orientation="horizontal"
         android:background="@drawable/customborder">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Счет" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <Spinner
+                android:id="@+id/spinnerAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:paddingRight="16dp"
+                android:spinnerMode="dropdown">
+
+            </Spinner>
+
+        </LinearLayout> >
 
     </LinearLayout>
     <!-- end layoutAccount-->
@@ -96,11 +157,48 @@
         android:layout_below="@+id/layoutAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
+        android:padding="20dp"
         android:orientation="horizontal"
         android:background="@drawable/customborder">
 
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Коментарий"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp">
+
+            <EditText
+                android:id="@+id/etAddSCostСomment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ваш комментарий "
+                android:inputType="text"
+                android:digits="0123456789.,"/>
+
+        </RelativeLayout>
     </LinearLayout>
     <!-- end layoutComment-->
+    <!-- layoutButtonADD-->
+
+
+    <Button
+        android:id="@+id/btnSaveAddCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/round_button"
+        android:text="Сохранить"
+        android:textColor="@android:color/white" />
+
+
+
+    <!-- end layoutButtonADD-->
+
+
 
 </RelativeLayout>
