@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<!--layoutDateTime-->
+    <LinearLayout
+        android:id="@+id/layoutDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+        <LinearLayout
+            android:id="@+id/layoutDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:onClick="setDate"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/addDataCost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:text="Дата" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:layout_gravity="center_horizontal"  >
+
+            <TextView
+                android:id="@+id/addTimeCost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:text="Время" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+<!--end layoutDateTime-->
+
+    <!-- layoutCategory-->
+    <LinearLayout
+        android:id="@+id/layoutCategory"
+        android:layout_below="@+id/layoutDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+    </LinearLayout>
+    <!-- end layoutCategory-->
+    <!-- layoutEditSum-->
+    <LinearLayout
+        android:id="@+id/layoutEditSum"
+        android:layout_below="@+id/layoutCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+    </LinearLayout>
+    <!-- end layoutEditSum-->
+    <!-- layoutAccount-->
+    <LinearLayout
+        android:id="@+id/layoutAccount"
+        android:layout_below="@+id/layoutEditSum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+    </LinearLayout>
+    <!-- end layoutAccount-->
+    <!-- layoutComment-->
+    <LinearLayout
+        android:id="@+id/layoutComment"
+        android:layout_below="@+id/layoutAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+    </LinearLayout>
+    <!-- end layoutComment-->
+
+</RelativeLayout>
