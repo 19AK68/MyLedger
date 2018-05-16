@@ -35,6 +35,8 @@
             android:id="@+id/layoutTime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="setTime"
             android:layout_weight="1"
 
             android:layout_gravity="center_horizontal"  >
@@ -65,6 +67,7 @@
         android:background="@drawable/customborder">
 
         <TextView
+            android:id="@+id/tvCategory"
             style="@style/CategoryStyle"
             android:text="Категория " />
 
@@ -110,9 +113,9 @@
                 android:id="@+id/etAddSCostSum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Введите Сумму"
-                android:inputType="number"
-                android:digits="0123456789.,"/>
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+               />
 
         </RelativeLayout>
 
@@ -163,7 +166,7 @@
 
         <TextView
             style="@style/CategoryStyle"
-            android:text="Коментарий"/>
+            android:text="Комментарий"/>
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -177,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:hint="ваш комментарий "
                 android:inputType="text"
-                android:digits="0123456789.,"/>
+             />
 
         </RelativeLayout>
     </LinearLayout>
@@ -189,7 +192,8 @@
         android:id="@+id/btnSaveAddCost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/layoutComment"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/round_button"
         android:text="Сохранить"

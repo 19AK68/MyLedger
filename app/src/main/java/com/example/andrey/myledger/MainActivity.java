@@ -123,9 +123,17 @@ public class MainActivity extends AppCompatActivity {
                 goToAddAccountBookActivity();
                 // Handle item selection
                 return true;
+
+            case R.id.addMenu2:
+                goToCategoryActivity();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void goToCategoryActivity() {
+        Intent intent = new Intent(MainActivity.this, AddCategoryActivity.class);
+        startActivity(intent);
     }
 
     private void goToAddAccountBookActivity(){

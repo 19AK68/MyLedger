@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.example.andrey.myledger.Model.AccountBook;
+import com.example.andrey.myledger.Model.Category;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,17 +42,12 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String SQL_CREATE_ACCOUNT_BOOK_TABLE = "CREATE TABLE "+ TABLE_NAME +"("
-                + AccountBookContract.AccountUserBook._ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + AccountBookContract.AccountUserBook.COLUMN_NAME + " TEXT NOT NULL,"
-                + AccountBookContract.AccountUserBook.COLUMN_BALANCE_SUM +" INTEGER NOT NULL DEFAULT 0); ";
 
-        //запускаем создание таблице
+        //запускаем создание таблицs
 
-        db.execSQL(SQL_CREATE_ACCOUNT_BOOK_TABLE);
-
-
-
+        db.execSQL(AccountBookContract.AccountUserBook.SQL_CREATE_ACCOUNT_BOOK_TABLE);
+        db.execSQL(AccountBookContract.Costs.SQL_CREATE_COSTS_TABLE);
+        db.execSQL(AccountBookContract.Category.SQL_CREATE_CATEGORY_TABLE);
     }
 
 
@@ -58,9 +55,15 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        // you can implement here migration process
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        this.onCreate(db);
+
+            db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.AccountUserBook.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.Costs.TABLE_NAME_COSTS);
+            db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.Category.TABLE_NAME_CATEGORY);
+
+
+
+
+         onCreate(db);
 
     }
 
@@ -76,6 +79,14 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
 
 
         db.insert(TABLE_NAME,null,values);
+        db.close();
+    }
+
+    public void saveNewCategory(Category category){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(AccountBookContract.Category.COLUMN_NAME_CATEGOTY,category.getCategoryName());
+        db.insert(AccountBookContract.Category.TABLE_NAME_CATEGORY,null,contentValues);
         db.close();
     }
 
@@ -164,4 +175,35 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
 
         Toast.makeText(context, "Updated successfully.", Toast.LENGTH_SHORT).show();
     }
+
+    /**Arrary from Spinner***/
+
+    public ArrayList<String>setupSpinnerCategory(){
+        ArrayList<String> list = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String table = AccountBookContract.Category.TABLE_NAME_CATEGORY;
+        db.beginTransaction();
+        try {
+            String selectQuery = " SELECT * FROM " + table;
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            if (cursor.getCount() > 1) {
+                while (cursor.moveToNext()) {
+                    String cname = cursor.getString(cursor.getColumnIndex(AccountBookContract.Category.COLUMN_NAME_CATEGOTY));
+                    list.add(cname);
+                }
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            db.endTransaction();
+            db.close();
+        }
+
+        return list;
+    }
+
+
+
 }

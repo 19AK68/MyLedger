@@ -16,4 +16,12 @@
         android:title="Add"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/addMenu2"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="AddCategory"
+        app:showAsAction="always">
+
+    </item>
+
 </menu>

@@ -19,7 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddAccountBookActivity"></activity>
+
         <activity android:name=".AddCost"></activity>
+
+        <activity android:name=".AddCategoryActivity"></activity>
+
     </application>
 
 </manifest>
