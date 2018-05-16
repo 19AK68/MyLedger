@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String filter ="";
     private Button btnCost;
     private Button btnIcomes;
+    private ClickListener mListener;
 
 
     @Override
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new AccountBookDbHelper(this);
         adapter = new AccountBookAdapter(dbHelper.accountBookList(filter),this,mRecyclerView);
         mRecyclerView.setAdapter(adapter);
+
 
 
     }

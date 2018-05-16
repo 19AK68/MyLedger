@@ -23,6 +23,7 @@
         <activity android:name=".AddCost"></activity>
 
         <activity android:name=".AddCategoryActivity"></activity>
+        <activity android:name=".InfoAccountBookActivity"></activity>
 
     </application>
 
