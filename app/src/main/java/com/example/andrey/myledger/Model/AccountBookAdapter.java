@@ -35,6 +35,7 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
 
 
 
+
     public  class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvAccountName;
@@ -98,7 +99,8 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
                             case R.id.opmenu_item_info:
                                 //Информация
                                 Toast.makeText(mContext , "ИФНОРМАЦИЯ", Toast.LENGTH_LONG).show();
-                                gotoInfoAccountBookActivity( accountBook.getAccountID());
+
+                                gotoInfoAccountBookActivity( accountBook.getAccountID(),accountBook.getAccountName());
 
                                 break;
                             case R.id.opmenu_item_edite:
@@ -147,10 +149,13 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
         });
     }
 
-    private void gotoInfoAccountBookActivity (long accountID ){
+    private void gotoInfoAccountBookActivity (long accountID,String accountName){
 
         Intent gotoAdd = new Intent(mContext,InfoAccountBookActivity.class);
         gotoAdd.putExtra("account_id", Long.toString(accountID));
+        gotoAdd.putExtra("account_name", accountName);
+
+
         mContext.startActivity(gotoAdd);
     }
 

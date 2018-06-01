@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                      gotoAddCost();
                         break;
                     case R.id.btnIncomes:
-                        Toast.makeText(getApplicationContext(),"Нажата кнопку Доходы",Toast.LENGTH_LONG).show();
+                        gotoAddIncom();
                         break;
 
                 }
@@ -145,6 +145,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoAddCost() {
         Intent intent = new Intent(MainActivity.this, AddCost.class);
+        startActivity(intent);
+    }
+
+    private void gotoAddIncom() {
+        Intent intent = new Intent(MainActivity.this, AddIncom.class);
         startActivity(intent);
     }
 

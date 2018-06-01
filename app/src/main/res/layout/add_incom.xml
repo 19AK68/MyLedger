@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<!--layoutDateTime-->
+    <!--layoutDateTime-->
     <LinearLayout
-        android:id="@+id/layoutDateTime"
+
+        android:id="@+id/layoutIncomDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -13,53 +14,55 @@
         android:background="@drawable/customborder">
 
         <LinearLayout
-            android:id="@+id/layoutDate"
+            android:id="@+id/layoutIncomDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
             android:clickable="true"
-            android:onClick="setDate"
+            android:onClick="setIncomDate"
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/addDataCost"
+                android:id="@+id/addDataIncom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:text="Дата" />
+                android:text="Дата"
+                android:textColor="@color/colorPrimaryDark"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutTime"
+            android:id="@+id/layoutIncomTime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:onClick="setTime"
+            android:onClick="setIncomTime"
             android:layout_weight="1"
 
             android:layout_gravity="center_horizontal"  >
 
             <TextView
-                android:id="@+id/addTimeCost"
+                android:id="@+id/addTimeIncom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:text="Время" />
+                android:text="Время"
+                android:textColor="@color/colorPrimaryDark"/>
 
         </LinearLayout>
 
 
 
     </LinearLayout>
-<!--end layoutDateTime-->
+    <!--end layoutDateTime-->
 
     <!-- layoutCategory-->
     <LinearLayout
-        android:id="@+id/layoutCategory"
-        android:layout_below="@+id/layoutDateTime"
+        android:id="@+id/layoutIncomCategory"
+        android:layout_below="@+id/layoutIncomDateTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -67,73 +70,10 @@
         android:background="@drawable/customborder">
 
         <TextView
-            android:id="@+id/tvCategory"
+            android:id="@+id/tvIncomCategory"
             style="@style/CategoryStyle"
-            android:text="Категория " />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-        <Spinner
-            android:id="@+id/spinnerCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:paddingRight="16dp"
-            android:spinnerMode="dropdown">
-
-        </Spinner>
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <!-- end layoutCategory-->
-    <!-- layoutEditSum-->
-    <LinearLayout
-        android:id="@+id/layoutEditSum"
-        android:layout_below="@+id/layoutCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="horizontal"
-        android:background="@drawable/customborder">
-
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="Cумма " />
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="4dp">
-
-            <EditText
-                android:id="@+id/etAddSCostSum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="0.00"
-                android:inputType="numberDecimal"
-               />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-    <!-- end layoutEditSum-->
-    <!-- layoutAccount-->
-    <LinearLayout
-        android:id="@+id/layoutAccount"
-        android:layout_below="@+id/layoutEditSum"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="horizontal"
-        android:background="@drawable/customborder">
-
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="Счет" />
+            android:text="Категория "
+            android:textColor="@color/colorPrimaryDark"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -142,7 +82,78 @@
 
 
             <Spinner
-                android:id="@+id/spinnerAccount"
+                android:id="@+id/spinnerIncomCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:paddingRight="16dp"
+                android:spinnerMode="dropdown"
+               >
+
+            </Spinner>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- end layoutCategory-->
+
+    <!-- layoutEditSum-->
+    <LinearLayout
+        android:id="@+id/layoutIncomEditSum"
+        android:layout_below="@+id/layoutIncomCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Cумма "
+            android:textColor="@color/colorPrimaryDark"
+            />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp">
+
+            <EditText
+                android:id="@+id/etAddIncomSum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="0.00"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorAccent"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!-- end layoutEditSum-->
+    <!-- layoutAccount-->
+    <LinearLayout
+        android:id="@+id/layoutIncomAccount"
+        android:layout_below="@+id/layoutIncomEditSum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/customborder">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Счет"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <Spinner
+                android:id="@+id/spinnerIncomAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:paddingRight="16dp"
@@ -156,8 +167,8 @@
     <!-- end layoutAccount-->
     <!-- layoutComment-->
     <LinearLayout
-        android:id="@+id/layoutComment"
-        android:layout_below="@+id/layoutAccount"
+        android:id="@+id/layoutIncomComment"
+        android:layout_below="@+id/layoutIncomAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -166,7 +177,8 @@
 
         <TextView
             style="@style/CategoryStyle"
-            android:text="Комментарий"/>
+            android:text="Комментарий"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -175,12 +187,13 @@
             android:paddingLeft="4dp">
 
             <EditText
-                android:id="@+id/etAddSCostСomment"
+                android:id="@+id/etAddIncomСomment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ваш комментарий "
                 android:inputType="text"
-             />
+                android:textColor="@color/colorAccent"
+                />
 
         </RelativeLayout>
     </LinearLayout>
@@ -189,16 +202,15 @@
 
 
     <Button
-        android:id="@+id/btnSaveAddCost"
+        android:id="@+id/btnSaveIncom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutComment"
+        android:layout_below="@+id/layoutIncomComment"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/round_button_cost"
+        android:background="@drawable/round_button_incom"
         android:text="Сохранить"
         android:textColor="@android:color/white" />
-
 
 
     <!-- end layoutButtonADD-->

@@ -2,6 +2,10 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="colorPrimaryDark">@color/status_bar_orange</item>-->
+        <item name="searchViewStyle">@style/AppSearchViewStyle</item>
+        <!--</style>-->
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -17,4 +21,32 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
+
+    <style name="AppSearchViewStyle" parent= "Widget.AppCompat.SearchView">
+        <item name="android:textCursorDrawable">@drawable/white_cursor</item>
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="searchIcon">@drawable/icon_toolbar_search</item>
+        <item name="closeIcon">@drawable/icon_toolbar_clear</item>
+        <item name="queryHint">@string/search_hint</item>
+        <item name="android:imeActionId">6</item>
+    </style>
+    <style name="CostStyle" parent="AppTheme">
+
+        <item name="colorPrimary">#800080</item>
+        <item name="colorPrimaryDark">#8B008B</item>
+        <item name="colorAccent">#EE82EE</item>
+
+
+
+    </style>
+
+    <style name="IncomStyle" parent="AppTheme">
+
+        <item name ="colorPrimary">#48D1CC</item>
+        <item  name="colorPrimaryDark">#20B2AA </item>
+        <item name="colorAccent">#008000</item>
+
+
+
+    </style>
 </resources>

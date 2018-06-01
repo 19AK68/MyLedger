@@ -50,7 +50,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_btn_white"
-                    android:text="Costs"
+                    android:text="Расход"
+                    android:textSize="12dp"
                     android:textColor="@color/colorPrimary" />
 
                 <Button
@@ -61,7 +62,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_btn_white"
-                    android:text="incom"
+                    android:text="Приход"
+                    android:textSize="12dp"
                     android:textColor="@color/colorPrimary" />
 
                 <Button
@@ -84,7 +86,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/round_btn_white"
-                    android:text="trans"
+                    android:text="Счет"
+                    android:textSize="12dp"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>

@@ -4,4 +4,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="vertical_ellipsis">&#8942;</string>
+    <string name="search_hint">Company name</string>
+
+    <!-- Переменніе категорий Дохода -->
+
+    <string name="INCOM_0">Неизвестно</string>
+    <string name="INCOM_1">Заработная Плата</string>
+    <string name="INCOM_2">Премия</string>
+    <string name="INCOM_3">Прочие </string>
+
+    <string-array name="array_incom_options">
+        <item>@string/INCOM_0</item>
+        <item>@string/INCOM_1</item>
+        <item>@string/INCOM_2</item>
+        <item>@string/INCOM_3</item>
+    </string-array>
 </resources>

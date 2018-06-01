@@ -10,6 +10,16 @@
 
 
     <!--#FF4081-->
+
+    <color name ="colorCostPrimary">#800080</color>
+    <color  name="colorCostPrimaryDark">#8B008B</color>
+    <color name="colorCostAccent">#EE82EE</color>
+
+    <color name ="colorIncomPrimary"> #48D1CC</color>
+    <color  name="colorIncomPrimaryDark">#20B2AA</color>
+    <color name="colorIncomAccent">#008000</color>
+
+
 </resources>
 
 

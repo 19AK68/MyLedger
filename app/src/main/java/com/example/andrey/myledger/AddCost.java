@@ -294,7 +294,7 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         positionAccount =position;
         String  selection =   parent.getItemAtPosition(position).toString();
-      String ssss = Integer.toString(positionAccount);
+         String ssss = Integer.toString(positionAccount);
 
 
 
@@ -318,12 +318,15 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
         String query;
         String tabelCategory;
         String tabelAccount;
+        String kod_operation = "0";
+        String mIncomCategory = "99";
+
 
 
         int posID_C =positionCategory+1;
         int posID_A = positionAccount+1;
 
-        String saveDate = currentDate.toString().trim();
+        String saveDate = currentDate.getText().toString().trim();
         String saveTime = currentTime.toString().trim();
 
         String saveCostCategory = Integer.toString(posID_C);
@@ -341,6 +344,8 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
         cv.put(AccountBookContract.Costs.COLUMN_COSTS_SUM,saveCostSumm);
         cv.put(AccountBookContract.Costs.COLUMN_COST_ACCOUNT,saveCostAccount);
         cv.put(AccountBookContract.Costs.COLUMN_COSTS_COMMENT,saveCostComment);
+        cv.put(AccountBookContract.Costs.COLUMN_INCOM_CATEGORY,mIncomCategory);
+        cv.put(AccountBookContract.Costs.COLUM_ID_OPERATION,kod_operation);
 
         db.insert(AccountBookContract.Costs.TABLE_NAME_COSTS,null,cv);
         db.close();
@@ -391,27 +396,27 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
 
     }
 
-    private Category getCostCategory(int posID) {
-        String query;
-        SQLiteDatabase db = new AccountBookDbHelper(this).getReadableDatabase();
-        query  = "SELECT  * FROM " + AccountBookContract.Category.TABLE_NAME_CATEGORY + " WHERE _ID="+ posID;
-        Cursor cursor = db.rawQuery(query,null);
-        Category receivedCategory = new Category();
-
-        if (cursor.getCount()>0){
-            cursor.moveToFirst();
-            receivedCategory.setCategoryID( cursor.getLong(cursor.getColumnIndex(AccountBookContract.Category._ID)) );
-            receivedCategory.setCategoryName(cursor.getString(cursor.getColumnIndex(AccountBookContract.Category.COLUMN_NAME_CATEGOTY)));
-
-        }
-
-
-
-      // db.close();
-
-        return receivedCategory;
-
-    }
+//    private Category getCostCategory(int posID) {
+//        String query;
+//        SQLiteDatabase db = new AccountBookDbHelper(this).getReadableDatabase();
+//        query  = "SELECT  * FROM " + AccountBookContract.Category.TABLE_NAME_CATEGORY + " WHERE _ID="+ posID;
+//        Cursor cursor = db.rawQuery(query,null);
+//        Category receivedCategory = new Category();
+//
+//        if (cursor.getCount()>0){
+//            cursor.moveToFirst();
+//            receivedCategory.setCategoryID( cursor.getLong(cursor.getColumnIndex(AccountBookContract.Category._ID)) );
+//            receivedCategory.setCategoryName(cursor.getString(cursor.getColumnIndex(AccountBookContract.Category.COLUMN_NAME_CATEGOTY)));
+//
+//        }
+//
+//
+//
+//      // db.close();
+//
+//        return receivedCategory;
+//
+//    }
 
 
 }
