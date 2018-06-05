@@ -100,7 +100,7 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
                                 //Информация
                                 Toast.makeText(mContext , "ИФНОРМАЦИЯ", Toast.LENGTH_LONG).show();
 
-                                gotoInfoAccountBookActivity( accountBook.getAccountID(),accountBook.getAccountName());
+                                gotoInfoAccountBookActivity( accountBook.getAccountID(),accountBook.getAccountName(),accountBook.getAccountBalance());
 
                                 break;
                             case R.id.opmenu_item_edite:
@@ -149,11 +149,12 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
         });
     }
 
-    private void gotoInfoAccountBookActivity (long accountID,String accountName){
+    private void gotoInfoAccountBookActivity (long accountID,String accountName,String accountSum){
 
         Intent gotoAdd = new Intent(mContext,InfoAccountBookActivity.class);
         gotoAdd.putExtra("account_id", Long.toString(accountID));
         gotoAdd.putExtra("account_name", accountName);
+        gotoAdd.putExtra("account_sum",accountSum);
 
 
         mContext.startActivity(gotoAdd);

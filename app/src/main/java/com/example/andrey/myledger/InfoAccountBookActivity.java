@@ -49,8 +49,11 @@ public class InfoAccountBookActivity extends AppCompatActivity{
         Intent intent = getIntent();
         String account_id = intent.getStringExtra("account_id");
         String account_name =  intent.getStringExtra("account_name");
+        String account_sum = intent.getStringExtra("account_sum");
 
-        mtvTitelInfo.setText("Информация : "+ account_name);
+
+        mtvTitelInfo.setText("Счет : "+ account_name +"  ");
+        mtvSumAccInfo.setText("Cумма : "+ "  "+account_sum);
 
         lvListInfoAcc = (ListView)  findViewById(R.id.lvAccountInfo);
         // делаем запрос и обображаем
