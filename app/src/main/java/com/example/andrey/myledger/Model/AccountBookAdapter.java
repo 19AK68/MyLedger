@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.andrey.myledger.AccountInfoFragment;
 import com.example.andrey.myledger.AddAccountBookActivity;
+import com.example.andrey.myledger.ChartAccountBookActivity;
 import com.example.andrey.myledger.ClickListener;
 import com.example.andrey.myledger.InfoAccountBookActivity;
 import com.example.andrey.myledger.R;
@@ -98,13 +99,14 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
                         switch (item.getItemId()) {
                             case R.id.opmenu_item_info:
                                 //Информация
-                                Toast.makeText(mContext , "ИФНОРМАЦИЯ", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(mContext , "ИФНОРМАЦИЯ", Toast.LENGTH_LONG).show();
 
                                 gotoInfoAccountBookActivity( accountBook.getAccountID(),accountBook.getAccountName(),accountBook.getAccountBalance());
 
                                 break;
                             case R.id.opmenu_item_edite:
                                 //Изменене
+                                gotoChartAccountBookActivity( accountBook.getAccountID());
 
                                 Toast.makeText(mContext, "ИЗМЕНЕНИЕ ", Toast.LENGTH_LONG).show();
                                 break;
@@ -147,6 +149,14 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
                  **/
             }
         });
+    }
+
+    private void gotoChartAccountBookActivity(long accountID) {
+
+        Intent gotoAdd = new Intent(mContext,ChartAccountBookActivity.class);
+        gotoAdd.putExtra("account_id", Long.toString(accountID));
+
+        mContext.startActivity(gotoAdd);
     }
 
     private void gotoInfoAccountBookActivity (long accountID,String accountName,String accountSum){

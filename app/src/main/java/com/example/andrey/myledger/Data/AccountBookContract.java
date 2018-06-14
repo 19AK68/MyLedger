@@ -36,7 +36,7 @@ public class AccountBookContract {
         public final static String COLUMN_COST_CATEGORY = "category";
         public final static String COLUMN_COSTS_SUM = "sum";
         public final static String COLUMN_COST_ACCOUNT = "account_cost";
-        public final static String COLUMN_COSTS_COMMENT = "comment";
+        public final static String COLUMN_COSTS_COMMENT = "comment"; //
         public final static String COLUMN_INCOM_CATEGORY = "incom_category";
         public final static String COLUM_ID_OPERATION = "id_operation";
 
@@ -68,6 +68,19 @@ public class AccountBookContract {
         public final static String SQL_CREATE_CATEGORY_TABLE = "CREATE TABLE "+ TABLE_NAME_CATEGORY +"("
                 +_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME_CATEGOTY +" TEXT NOT NULL ); ";
+
+
+    }
+
+    public  static  final class IncomCategory implements BaseColumns {
+
+        public  final  static String TABLE_NAME_INCOMCATEFORY = "incomcategory";
+        public final static  String _ID = BaseColumns._ID;
+        public final static  String COLUMN_NAME_INCOMCATEGOTY = "name_incomcategory";
+
+        public final static String SQL_CREATE_INCOMCATEGORY_TABLE = "CREATE TABLE "+ TABLE_NAME_INCOMCATEFORY +"("
+                +_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_NAME_INCOMCATEGOTY +" TEXT NOT NULL ); ";
 
 
     }

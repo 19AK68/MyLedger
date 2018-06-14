@@ -48,6 +48,7 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
         db.execSQL(AccountBookContract.AccountUserBook.SQL_CREATE_ACCOUNT_BOOK_TABLE);
         db.execSQL(AccountBookContract.Costs.SQL_CREATE_COSTS_TABLE);
         db.execSQL(AccountBookContract.Category.SQL_CREATE_CATEGORY_TABLE);
+        db.execSQL(AccountBookContract.IncomCategory.SQL_CREATE_INCOMCATEGORY_TABLE);
     }
 
 
@@ -59,7 +60,7 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.AccountUserBook.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.Costs.TABLE_NAME_COSTS);
             db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.Category.TABLE_NAME_CATEGORY);
-
+            db.execSQL("DROP TABLE IF EXISTS " +AccountBookContract.IncomCategory.TABLE_NAME_INCOMCATEFORY);
 
 
 

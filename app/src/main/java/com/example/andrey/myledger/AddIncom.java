@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +23,16 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.andrey.myledger.Data.AccountBookContract;
 import com.example.andrey.myledger.Data.AccountBookDbHelper;
 import com.example.andrey.myledger.Model.AccountBook;
 
 import java.security.PrivateKey;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -47,6 +51,8 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
     private Button mBtnSaveIncom;
     private int positionIncomCategory = 0;
     private int positionIncomAccount = 0;
+
+    private ArrayAdapter<String> listIncomCategoryAdapter;
 
 
     Spinner mSpinnerIncomCategory;
@@ -76,6 +82,8 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
 
         mIncomCategory = (TextView) findViewById(R.id.tvIncomCategory);
         mSpinnerIncomCategory = (Spinner)findViewById(R.id.spinnerIncomCategory);
+
+
 
         // int Account
 
@@ -129,12 +137,32 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
         /****************** SPINNER INCOM CATEGORY***************************************/
 
 
-        setupSpinnerIncomCategory();
+         String[] spinnerIncomCategoryLists =  setupSpinnerIncomCategory();
+
+        ArrayAdapter<String> spinnerImCategoryAdapter = new ArrayAdapter<String>(AddIncom.this,android.R.layout.simple_spinner_item,spinnerIncomCategoryLists);
+
+        final int spinnerSize =spinnerIncomCategoryLists.length;
+
+        mSpinnerIncomCategory.setAdapter(spinnerImCategoryAdapter);
+
+
+
         mSpinnerIncomCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String  selection =   parent.getItemAtPosition(position).toString();
                 positionIncomCategory = position;
+
+                if (spinnerSize == position + 1){
+
+                    Toast.makeText(getApplicationContext(),"НАДО БЫ ДОБАВИТь КАТЕГОРИЮ",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getApplicationContext(),"Вызов функции",Toast.LENGTH_LONG).show();
+
+
+                }
+
+
             }
 
             @Override
@@ -231,16 +259,73 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
 
     /****Setup Spinner Incom Category *******/
 
-    private void setupSpinnerIncomCategory() {
+    private String [] setupSpinnerIncomCategory() {
 
 
-        ArrayAdapter categoryIncomSpinerAdapter = ArrayAdapter.createFromResource(
-                this,R.array.array_incom_options, android.R.layout.simple_spinner_item );
+//        ArrayAdapter categoryIncomSpinerAdapter = ArrayAdapter.createFromResource(
+//                this,R.array.array_incom_options, android.R.layout.simple_spinner_item );
+//
+//        categoryIncomSpinerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//
+//        mSpinnerIncomCategory.setAdapter(categoryIncomSpinerAdapter);
+//        mSpinnerIncomCategory.setSelection(1);
 
-        categoryIncomSpinerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        SQLiteDatabase db = new AccountBookDbHelper(this).getWritableDatabase();
 
-        mSpinnerIncomCategory.setAdapter(categoryIncomSpinerAdapter);
-        mSpinnerIncomCategory.setSelection(1);
+        ArrayList<String> listInCategorySpinner = new ArrayList<String>();
+
+        String nameColInCategory = AccountBookContract.IncomCategory.COLUMN_NAME_INCOMCATEGOTY ;
+
+
+        String[] mSpinnerIncomCategoryCol = new String[]{"_id",nameColInCategory};
+        Cursor cursorIncomCamegory = db.query(
+                AccountBookContract.IncomCategory.TABLE_NAME_INCOMCATEFORY,
+                mSpinnerIncomCategoryCol,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursorIncomCamegory.moveToFirst()) {
+
+            do{
+
+                String addInCategorySpinner = cursorIncomCamegory.getString(cursorIncomCamegory.getColumnIndex(nameColInCategory));
+                listInCategorySpinner.add(addInCategorySpinner);
+
+
+            }while (cursorIncomCamegory.moveToNext());
+
+        }
+
+        db.close();
+
+        listInCategorySpinner.add("Добавить");
+        String [] allInCategorySpinner = new String[listInCategorySpinner.size()];
+        allInCategorySpinner  = listInCategorySpinner.toArray(allInCategorySpinner);
+
+         return allInCategorySpinner;
+
+        /**
+        String [] adapterIncomCategoryCol = new String[]{AccountBookContract.IncomCategory.COLUMN_NAME_INCOMCATEGOTY};
+        int []  adapterIncomCategoryRowView = new int[] {android.R.id.text1};
+
+        SimpleCursorAdapter cursorIncomCategoryAdapter= new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                cursorIncomCamegory,
+                adapterIncomCategoryCol,
+                adapterIncomCategoryRowView, 0
+        );
+
+        cursorIncomCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerIncomCategory.setAdapter(cursorIncomCategoryAdapter);
+
+         db.close();
+        */
+
 
     }
 
@@ -303,7 +388,7 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
     private void SaveIncom() {
 
         String quiery;
-        String mCostCategory = "98";
+        String mCostCategory = "998";
         String kod_operation = "1";
 
         int posID_IncomCategory =positionIncomCategory+1;

@@ -318,8 +318,8 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
         String query;
         String tabelCategory;
         String tabelAccount;
-        String kod_operation = "0";
-        String mIncomCategory = "99";
+        String kod_operation = "0"; //  затраты  = 0, приход = 1
+        String mIncomCategory = "999"; // посольку  это затраты
 
 
 
