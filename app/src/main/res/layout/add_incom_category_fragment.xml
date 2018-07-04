@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="16dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="#f0f0f0"
+
+    >
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/layoutAddCategory"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/add_incom_category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="Категория  "
+            android:inputType="text"
+            android:singleLine="true" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+
+        android:id="@+id/btnAddIncomCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+
+        android:background="@drawable/round_button"
+        android:clickable="true"
+        android:text="Добавить "
+        android:textColor="@android:color/white"
+
+        />
+
+
+
+</LinearLayout>

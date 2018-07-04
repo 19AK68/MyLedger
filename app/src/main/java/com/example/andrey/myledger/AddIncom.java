@@ -1,15 +1,17 @@
 package com.example.andrey.myledger;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateUtils;
@@ -19,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,12 +32,14 @@ import com.example.andrey.myledger.Data.AccountBookContract;
 import com.example.andrey.myledger.Data.AccountBookDbHelper;
 import com.example.andrey.myledger.Model.AccountBook;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import static com.example.andrey.myledger.R.id.add_incom_container;
+
+public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag, AdapterView.OnItemSelectedListener {
+
+    private AddIncomDialogFragment addIncomDialogFragmet = new AddIncomDialogFragment();
 
     private TextView mCurrentIncomDate;
     private TextView mCurrentIncomTime;
@@ -49,12 +54,13 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
     private EditText mIncomComment ;
 
     private Button mBtnSaveIncom;
+
     private int positionIncomCategory = 0;
     private int positionIncomAccount = 0;
 
     private ArrayAdapter<String> listIncomCategoryAdapter;
 
-
+    private ImageButton imageButtonAdd;
     Spinner mSpinnerIncomCategory;
     Spinner mSpinnerIncomAccount;
 
@@ -125,6 +131,10 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
 
+        // int imageButtonA
+
+        imageButtonAdd = (ImageButton)findViewById(R.id.imageButtonAddIncomCategory);
+
         // incom comment
 
         mIncomComment =  (EditText)findViewById(R.id.etAddIncomСomment);
@@ -141,7 +151,7 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
 
         ArrayAdapter<String> spinnerImCategoryAdapter = new ArrayAdapter<String>(AddIncom.this,android.R.layout.simple_spinner_item,spinnerIncomCategoryLists);
 
-        final int spinnerSize =spinnerIncomCategoryLists.length;
+        final int spinnerSize = spinnerIncomCategoryLists.length;
 
         mSpinnerIncomCategory.setAdapter(spinnerImCategoryAdapter);
 
@@ -153,14 +163,20 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
                 String  selection =   parent.getItemAtPosition(position).toString();
                 positionIncomCategory = position;
 
-                if (spinnerSize == position + 1){
+             //   if (spinnerSize == position + 1){
 
-                    Toast.makeText(getApplicationContext(),"НАДО БЫ ДОБАВИТь КАТЕГОРИЮ",Toast.LENGTH_LONG).show();
+             //       Toast.makeText(getApplicationContext(),"НАДО БЫ ДОБАВИТь КАТЕГОРИЮ",Toast.LENGTH_LONG).show();
 
-                    Toast.makeText(getApplicationContext(),"Вызов функции",Toast.LENGTH_LONG).show();
+//                    FragmentManager dialogFragManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = dialogFragManager.beginTransaction();
+//                    fragmentTransaction.add(R.id.add_incom_container, new AddIncomDialogFragment());
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
+//                    addIncomDialogFragmet.show(getFragmentManager(),"addDialog");
 
 
-                }
+
+            //    }
 
 
             }
@@ -172,6 +188,19 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
         });
 
         /****************** END spinner incom Category***************************************/
+
+
+        imageButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.add_incom_container, new AddIncomCategory());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
 
         /****************** SPINNER INCOM ACCOUNT*******************************************/
 
@@ -477,4 +506,23 @@ public class AddIncom extends AppCompatActivity implements AdapterView.OnItemSel
         Intent intent = new Intent(AddIncom.this, MainActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+
+        Toast.makeText(this,"Вызов функции",Toast.LENGTH_LONG).show();
+       // AddNewToDBIncomCategory();
+        return;
+    }
+
+
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
+        Toast.makeText(this,"Ничего не делаем",Toast.LENGTH_LONG).show();
+        return;
+    }
+
+
 }
