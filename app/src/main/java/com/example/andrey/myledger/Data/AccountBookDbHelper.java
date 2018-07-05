@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.andrey.myledger.Model.AccountBook;
 import com.example.andrey.myledger.Model.Category;
+import com.example.andrey.myledger.Model.IncomCategory;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -90,6 +91,20 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
         db.insert(AccountBookContract.Category.TABLE_NAME_CATEGORY,null,contentValues);
         db.close();
     }
+
+    // Save new IncomCategoty
+
+    public void saveNewIncomCategory(IncomCategory incomCategory) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(AccountBookContract.IncomCategory.COLUMN_NAME_INCOMCATEGOTY,incomCategory.getIncom_categoryName());
+        db.insert(AccountBookContract.IncomCategory.TABLE_NAME_INCOMCATEFORY,null,contentValues);
+        db.close();
+
+    }
+
+
 
     /** ЗАПРОСЫ
      * Query records, give options to filter results**/
@@ -204,7 +219,6 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
 
         return list;
     }
-
 
 
 }
