@@ -147,13 +147,8 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
         /****************** SPINNER INCOM CATEGORY***************************************/
 
 
-         String[] spinnerIncomCategoryLists =  setupSpinnerIncomCategory();
+        initSpinner();
 
-        ArrayAdapter<String> spinnerImCategoryAdapter = new ArrayAdapter<String>(AddIncom.this,android.R.layout.simple_spinner_item,spinnerIncomCategoryLists);
-
-        final int spinnerSize = spinnerIncomCategoryLists.length;
-
-        mSpinnerIncomCategory.setAdapter(spinnerImCategoryAdapter);
 
 
 
@@ -199,6 +194,9 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
+
+
+
             }
         });
 
@@ -223,7 +221,14 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
     }
 
+    public void initSpinner() {
+        String[] spinnerIncomCategoryLists =  setupSpinnerIncomCategory();
 
+        ArrayAdapter<String> spinnerImCategoryAdapter = new ArrayAdapter<String>(AddIncom.this,android.R.layout.simple_spinner_item,spinnerIncomCategoryLists);
+        //spinnerImCategoryAdapter.setNotifyOnChange(true);
+
+        mSpinnerIncomCategory.setAdapter(spinnerImCategoryAdapter);
+    }
 
 
     /*****end Create*******************************************************************************/
@@ -288,7 +293,7 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
     /****Setup Spinner Incom Category *******/
 
-    private String [] setupSpinnerIncomCategory() {
+    public String [] setupSpinnerIncomCategory() {
 
 
 //        ArrayAdapter categoryIncomSpinerAdapter = ArrayAdapter.createFromResource(
@@ -331,7 +336,7 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
         db.close();
 
-        listInCategorySpinner.add("Добавить");
+       // listInCategorySpinner.add("Добавить");
         String [] allInCategorySpinner = new String[listInCategorySpinner.size()];
         allInCategorySpinner  = listInCategorySpinner.toArray(allInCategorySpinner);
 
@@ -525,4 +530,8 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
     }
 
 
+
+
 }
+
+

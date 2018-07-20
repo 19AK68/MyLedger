@@ -28,7 +28,7 @@ public class AddIncomCategory extends Fragment {
 
     private AccountBookDbHelper dbHelper;
 
-public   AddIncomCategory () {
+    public AddIncomCategory() {
 
         // Required empty public constructor
     }
@@ -39,7 +39,7 @@ public   AddIncomCategory () {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
 
-        rootView =  inflater.inflate(R.layout.add_incom_category_fragment, container, false);
+        rootView = inflater.inflate(R.layout.add_incom_category_fragment, container, false);
 
         etNameCategory = rootView.findViewById(R.id.add_incom_category_name);
         buttonAdd = rootView.findViewById(R.id.btnAddIncomCategory);
@@ -48,16 +48,14 @@ public   AddIncomCategory () {
             public void onClick(View v) {
                 AddNewIncomCategory();
                 Keyboard.hide(v);
+                AddIncom addIncom = (AddIncom) getActivity();
+                addIncom.setupSpinnerIncomCategory();
+                addIncom.initSpinner();
             }
         });
 
 
-
-
-        return  rootView;
-
-
-
+        return rootView;
 
 
     }
@@ -82,14 +80,13 @@ public   AddIncomCategory () {
         goBackActivity();
 
 
-
-
     }
 
     private void goBackActivity() {
         // Request focus and show soft keyboard automatically
 
         getActivity().getFragmentManager().popBackStack();
+
     }
 
 
