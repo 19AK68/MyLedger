@@ -182,6 +182,23 @@
 
         </LinearLayout> >
 
+        <LinearLayout
+            android:id="@+id/layoutImgButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageButton
+                android:id="@+id/imageButtonAddIncomAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:src="@drawable/ic_add_category_point"
+                />
+        </LinearLayout>
+
+
     </LinearLayout>
     <!-- end layoutAccount-->
     <!-- layoutComment-->

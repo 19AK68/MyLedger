@@ -60,7 +60,7 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
     private ArrayAdapter<String> listIncomCategoryAdapter;
 
-    private ImageButton imageButtonAdd;
+    private ImageButton imageButtonAdd, imageButtonAddAccount;
     Spinner mSpinnerIncomCategory;
     Spinner mSpinnerIncomAccount;
 
@@ -134,6 +134,8 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
         // int imageButtonA
 
         imageButtonAdd = (ImageButton)findViewById(R.id.imageButtonAddIncomCategory);
+        imageButtonAddAccount =  (ImageButton)findViewById(R.id.imageButtonAddIncomAccount);
+
 
         // incom comment
 
@@ -204,7 +206,19 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
 
         setupSpinnerIncomAccount();
+
         mSpinnerIncomAccount.setOnItemSelectedListener(this);
+
+        imageButtonAddAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.add_incom_container, new AddIncomAccoutnFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
 
         /****************** END spinner incom Account***************************************/
@@ -369,7 +383,7 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
 
     /****Setup Spinner Incom Account *******/
 
-    private  void setupSpinnerIncomAccount (){
+    void setupSpinnerIncomAccount(){
 
         SQLiteDatabase db = new AccountBookDbHelper(this).getWritableDatabase();
 
