@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.addMenu2:
-                goToCategoryActivity();
+              //  goToCategoryActivity();
             default:
                 return super.onOptionsItemSelected(item);
         }

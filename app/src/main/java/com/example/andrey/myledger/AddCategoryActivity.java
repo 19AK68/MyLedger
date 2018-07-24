@@ -30,7 +30,9 @@ public class AddCategoryActivity  extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addNewCategory();
+
             }
         }
         );
@@ -64,7 +66,7 @@ public class AddCategoryActivity  extends AppCompatActivity {
 
     private void goBackHome() {
 
-        startActivity(new Intent(AddCategoryActivity.this, MainActivity.class));
+        startActivity(new Intent(AddCategoryActivity.this, AddCost.class));
     }
 
     

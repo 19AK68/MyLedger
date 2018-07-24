@@ -1,6 +1,10 @@
 package com.example.andrey.myledger;
 
 import android.app.DatePickerDialog;
+
+import android.app.FragmentManager;
+import android.support.v4.app.FragmentActivity;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -8,6 +12,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -19,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,6 +52,8 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
    private EditText mComment ;
 
    private Button mBtnSaveCost;
+
+   private ImageButton imageButtonAddCostCategoty;
    private int positionCategory = 0;
    private int positionAccount = 0;
 
@@ -76,7 +84,10 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
         setInitialDateTime();
         ///////
 
+
         mCategory=(TextView)findViewById(R.id.tvCategory);
+        imageButtonAddCostCategoty = (ImageButton) findViewById(R.id.imageButtonAddCostCategory);
+
         mSpinnerCategory = (Spinner)findViewById(R.id.spinnerCategory) ;
          //   setupSpinnerCategory();
 
@@ -100,8 +111,7 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String  selection =   parent.getItemAtPosition(position).toString();
-                 Toast toast = Toast.makeText(getApplication(),selection+ " позиция " + " "+ position+ " " + "id = " + id+" ",Toast.LENGTH_LONG);
-                        toast.show();
+
                    positionCategory = position;
             }
 
@@ -111,7 +121,17 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
             }
         });
 
+        imageButtonAddCostCategoty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.add_cost_container, new AddCostCategoryFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
 
         mAddCostSum.addTextChangedListener(new TextWatcher(){
@@ -158,6 +178,11 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
 
     }
 
+    private void goToAddCategoryActivity() {
+        Intent intent = new Intent(AddCost.this, AddCategoryActivity.class);
+        startActivity(intent);
+    }
+
     private void gotoMainActivity() {
         Intent intent = new Intent(AddCost.this, MainActivity.class);
         startActivity(intent);
@@ -199,7 +224,7 @@ public class AddCost extends AppCompatActivity implements AdapterView.OnItemSele
     }
     /***ens Setup Spinner Account**/
 
-    private void setupSpinnerCategory() {
+    public void setupSpinnerCategory() {
 
 
         SQLiteDatabase db = new AccountBookDbHelper(this).getWritableDatabase();

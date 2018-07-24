@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_cost_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
 <!--layoutDateTime-->
     <LinearLayout
         android:id="@+id/layoutDateTime"
@@ -85,6 +87,22 @@
             android:spinnerMode="dropdown">
 
         </Spinner>
+
+            <LinearLayout
+                android:id="@+id/layoutImgButtonAddCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_centerHorizontal="true">
+
+                <ImageButton
+                    android:id="@+id/imageButtonAddCostCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#f0f0f0"
+                    android:src="@drawable/ic_add_circle_cost_category_24dp"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
