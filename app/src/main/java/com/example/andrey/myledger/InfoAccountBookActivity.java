@@ -1,5 +1,6 @@
 package com.example.andrey.myledger;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import com.example.andrey.myledger.Data.AccountBookContract;
 import com.example.andrey.myledger.Data.AccountBookDbHelper;
 
-public class InfoAccountBookActivity extends AppCompatActivity{
+public class InfoAccountBookActivity extends Activity {
 
 
 

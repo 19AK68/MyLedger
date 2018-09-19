@@ -89,14 +89,9 @@ public class AddIncom extends FragmentActivity implements  IAddCategorytDialFrag
         mIncomCategory = (TextView) findViewById(R.id.tvIncomCategory);
         mSpinnerIncomCategory = (Spinner)findViewById(R.id.spinnerIncomCategory);
 
-
-
         // int Account
 
-
         mSpinnerIncomAccount = (Spinner)findViewById(R.id.spinnerIncomAccount);
-
-
 
 
         //int incom sum
