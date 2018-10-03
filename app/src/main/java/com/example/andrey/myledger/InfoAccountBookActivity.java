@@ -110,7 +110,6 @@ public class InfoAccountBookActivity extends Activity {
 
 
 
-
         Cursor cursor = mDB.rawQuery(quieryJoin,null);
 
 
