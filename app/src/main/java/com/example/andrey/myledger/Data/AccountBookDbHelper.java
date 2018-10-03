@@ -138,7 +138,6 @@ public class AccountBookDbHelper extends SQLiteOpenHelper {
                 accountBook.setAccountName(cursor.getString(cursor.getColumnIndex(AccountBookContract.AccountUserBook.COLUMN_NAME)));
                 accountBook.setAccountBalance(cursor.getString(cursor.getColumnIndex(AccountBookContract.AccountUserBook.COLUMN_BALANCE_SUM)));
 
-                accountBookLinkeList.add(accountBook);
 
             }while (cursor.moveToNext());
 
