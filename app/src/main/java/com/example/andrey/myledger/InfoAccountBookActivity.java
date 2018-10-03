@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -16,8 +17,9 @@ import android.widget.Toast;
 
 import com.example.andrey.myledger.Data.AccountBookContract;
 import com.example.andrey.myledger.Data.AccountBookDbHelper;
+import com.example.andrey.myledger.Model.AccountBook;
 
-public class InfoAccountBookActivity extends Activity {
+public class InfoAccountBookActivity extends AppCompatActivity {
 
 
 
@@ -28,7 +30,7 @@ public class InfoAccountBookActivity extends Activity {
 
     ListView lvListInfoAcc;
     SQLiteDatabase mDB;
-   // AccountBookDbHelper dbHelper;
+    AccountBookDbHelper dbHelper;
     Context mContext;
     SimpleCursorAdapter scAdapter;
 
@@ -108,6 +110,20 @@ public class InfoAccountBookActivity extends Activity {
                             + tableCost +"." + colCategoryInfo +  "=" + tableCategory + "." + cateforyID
                             + " WHERE "+ colAccInfo + "=" + idAccCol;
 
+
+        String quiery3Join = " SELECT "
+                                + AccountBookContract.Costs._ID
+                                + AccountBookContract.Costs.COLUMN_COSTS_DATE
+                                + AccountBookContract.Costs.COLUMN_COST_CATEGORY + " AS  category_id"
+                                + AccountBookContract.IncomCategory.COLUMN_NAME_INCOMCATEGOTY + " AS category_name"
+                                + AccountBookContract.Costs.COLUMN_COSTS_SUM
+                                + AccountBookContract.Costs.COLUMN_COSTS_COMMENT
+                                + subSelectConcat
+                                + " FROM "
+                                + AccountBookContract.Costs.TABLE_NAME_COSTS
+                                + " LEFT JOIN " + AccountBookContract.Category.TABLE_NAME_CATEGORY + " ON " + AccountBookContract.Costs.COLUMN_INCOM_CATEGORY + " = " + AccountBookContract.Category._ID
+                                + " LEFT JOIN " + AccountBookContract.IncomCategory.TABLE_NAME_INCOMCATEFORY + " ON " + AccountBookContract.IncomCategory.COLUMN_NAME_INCOMCATEGOTY + " = " + AccountBookContract.Costs.COLUMN_INCOM_CATEGORY
+                                + " WHERE "+ AccountBookContract.Costs.COLUMN_COST_ACCOUNT + "=" + idAccCol;
 
 
 

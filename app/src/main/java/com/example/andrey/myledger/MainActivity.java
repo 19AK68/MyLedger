@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.addMenu:
-                goToAddAccountBookActivity();
+               // goToAddAccountBookActivity();
                 // Handle item selection
                 return true;
 

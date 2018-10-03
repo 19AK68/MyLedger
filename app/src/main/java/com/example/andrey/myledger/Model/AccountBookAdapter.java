@@ -32,11 +32,6 @@ public class AccountBookAdapter extends RecyclerView.Adapter<AccountBookAdapter.
     private RecyclerView mRecyclerView;
 
 
-
-
-
-
-
     public  class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvAccountName;
